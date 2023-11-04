@@ -1,2 +1,2 @@
-//test
-//chanmg1gi
+//this is a comment
+//We are team 7
