@@ -1,5 +1,4 @@
-//this is a comment
-//We are team 7
+
 //this is julia
 'use strict';
 
@@ -23,6 +22,11 @@ function Dice(){
   //console.log(randomNumber);
   return randomNumber;
   }
+
+//This is Roshan
+const generateImage = (n) {
+    document.getElementById("dice").src=`dice-${n}`;
+    }
 
 const start = function () {
     scores = [0, 0];
