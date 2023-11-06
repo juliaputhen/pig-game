@@ -1,8 +1,4 @@
-
-//this is julia
 'use strict';
-
-// Selecting elements
 const playerX = document.querySelector('.player--0');
 const playerY = document.querySelector('.player--1');
 const scoreX = document.querySelector('#score--0');
@@ -10,76 +6,62 @@ const scoreY = document.getElementById('score--1');
 const currentX = document.getElementById('current--0');
 const currentY = document.getElementById('current--1');
 
-const dice = document.querySelector('.dice');
+const diceRoll = document.querySelector('.dice');
 const buttonNew = document.querySelector('.btn--new');
 const buttonRoll = document.querySelector('.btn--roll');
 const buttonHold = document.querySelector('.btn--hold');
 
 let scores, currentScore, activePlayer, playing;
-// currentScore = 20;
-function Dice(){
-  const randomNumber=Math.floor(Math.random() * 6) + 1;
-  //console.log(randomNumber);
+
+const init = function () {
+  scores = [0, 0];
+  currentScore = activePlayer = 0;
+  playing = true;
+
+  scoreX.textContent = 0;
+  scoreY.textContent = 0;
+  currentX.textContent = 0;
+  currentY.textContent = 0;
+
+  diceRoll.classList.add('hidden');
+  playerX.classList.remove('player--winner');
+  playerY.classList.remove('player--winner');
+  playerX.classList.add('player--active');
+  playerY.classList.remove('player--active');
+  document.getElementById('winnerMessage').style.display = 'none';
+};
+init();
+function Dice() {
+  const randomNumber = Math.floor(Math.random() * 6) + 1;
   return randomNumber;
-  }
+}
+const generateImage = n => {
+  document.querySelector('.dice').src = `dice-${n}.png`;
+};
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  currentScore = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  playerX.classList.toggle('player--active');
+  playerY.classList.toggle('player--active');
+};
 
-//This is Roshan
-const generateImage = (n) {
-    document.getElementById("dice").src=`dice-${n}`;
-    }
-
-const start = function () {
-    scores = [0, 0];
-    currentScore = 0;
-    activePlayer = 0;
-    playing = true;
-  
-    scoreX.textContent = 0;
-    scoreY.textContent = 0;
-    currentX.textContent = 0;
-    currentY.textContent = 0;
-  
-    dice.classList.add('hidden');
-    playerX.classList.remove('player--winner');
-    playerY.classList.remove('player--winner');
-    playerX.classList.add('player--active');
-    playerY.classList.remove('player--active');
-  };
-  start();
-  
-  buttonNew.addEventListener('click',start);
-rollDice.addEventListener('click', function () {
+buttonRoll.addEventListener('click', function () {
   if (playing) {
-    const dice = dice();
+    const dice = Dice();
+
+    diceRoll.classList.remove('hidden');
+    generateImage(dice);
+
     if (dice !== 1) {
       currentScore += dice;
       document.getElementById(`current--${activePlayer}`).textContent =
         currentScore;
     } else {
-      playerSwitching();
+      switchPlayer();
     }
   }
 });
-
-//following is the hold button
-
-const player0El = document.querySelector('.player--0');
-const player1El = document.querySelector('.player--1');
-
-const diceEl = document.querySelector('.dice');
-// const buttonHold = document.querySelector('.btn--hold');
-
-// let scores, currentScore, activePlayer, playing;
-scores = 20;
-playing = true;
-activePlayer = 0;
-const switchPlayer = function () {
-  document.getElementById(`current--${activePlayer}`).textContent = 0;
-  currentScore = 0;
-  activePlayer = activePlayer === 0 ? 1 : 0;
-  player0El.classList.toggle('player--active');
-  player1El.classList.toggle('player--active');
-};
 
 buttonHold.addEventListener('click', function () {
   if (playing) {
@@ -88,9 +70,9 @@ buttonHold.addEventListener('click', function () {
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
 
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 20) {
       playing = false;
-      diceEl.classList.add('hidden');
+      diceRoll.classList.add('hidden');
 
       document
         .querySelector(`.player--${activePlayer}`)
@@ -103,3 +85,11 @@ buttonHold.addEventListener('click', function () {
     }
   }
 });
+
+buttonNew.addEventListener('click', init);
+document
+  .getElementById('showWinnerButton')
+  .addEventListener('click', function () {
+    const playerName = 'Player' + Number(activePlayer + 1);
+    document.getElementById('playerName').textContent = playerName;
+  });
