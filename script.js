@@ -18,6 +18,11 @@ const buttonHold = document.querySelector('.btn--hold');
 
 let scores, currentScore, activePlayer, playing;
 // currentScore = 20;
+function Dice(){
+  const randomNumber=Math.floor(Math.random() * 6) + 1;
+  //console.log(randomNumber);
+  return randomNumber;
+  }
 
 const start = function () {
     scores = [0, 0];
