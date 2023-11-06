@@ -1,2 +1,3 @@
-//this is a comment
-//We are team 7
+const generateImage = (n) {
+    document.getElementById("dice").src=`dice-${n}`;
+    }
