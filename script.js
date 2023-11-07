@@ -80,6 +80,9 @@ buttonHold.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
+      const playerName = 'Player' + Number(activePlayer + 1);
+      document.getElementById('playerName').textContent = playerName;
+      document.getElementById('winnerMessage').style.display = 'block';
     } else {
       switchPlayer();
     }
@@ -87,9 +90,3 @@ buttonHold.addEventListener('click', function () {
 });
 
 buttonNew.addEventListener('click', init);
-document
-  .getElementById('showWinnerButton')
-  .addEventListener('click', function () {
-    const playerName = 'Player' + Number(activePlayer + 1);
-    document.getElementById('playerName').textContent = playerName;
-  });
