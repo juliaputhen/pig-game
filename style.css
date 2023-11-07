@@ -18,6 +18,7 @@ body {
   color: #333;
   background-image: linear-gradient(to top left, #363b82 0%, #2ebfac 100%);
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
@@ -102,6 +103,7 @@ main {
 /* ABSOLUTE POSITIONED ELEMENTS */
 .btn {
   position: absolute;
+  /* animation: changeGradient 3s infinite; */
   left: 50%;
   transform: translateX(-50%);
   color: #444;
@@ -178,6 +180,7 @@ main {
   width: 320px;
   transform: translate(-50%, -50%);
   background-color: #4caf50;
+
   color: #fff;
   padding: 10px;
   margin-right: 15px;
@@ -193,4 +196,84 @@ main {
 }
 .hiddenMsg {
   display: none;
+}
+
+/* Add your CSS styles here if needed */
+.fireworks {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #f00;
+  border-radius: 50%;
+  animation: explode 1s linear infinite;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.8);
+  }
+}
+/* Add your CSS styles here if needed */
+.fireworks-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.firework {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  opacity: 1;
+  animation: explode 1s linear infinite;
+}
+
+@keyframes explode {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.8);
+  }
+}
+
+/* Define custom styles for different fireworks */
+.firework-1 {
+  background-color: #f00;
+  border-radius: 50%;
+}
+
+.firework-2 {
+  background-color: #00f;
+  border-radius: 0;
+}
+
+.firework-3 {
+  background-color: #0f0;
+  border-radius: 50% 0 50% 50%;
+}
+
+/* Add more styles for different fireworks as needed */
+
+@keyframes changeGradient {
+  0% {
+    background: linear-gradient(45deg, #3494e6, #ec6ead);
+  }
+  33% {
+    background: linear-gradient(45deg, #ec6ead, #f093fb);
+  }
+  66% {
+    background: linear-gradient(45deg, #f093fb, #6fe3f0);
+  }
+  100% {
+    background: linear-gradient(45deg, #6fe3f0, #3494e6);
+  }
 }

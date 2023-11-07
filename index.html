@@ -31,11 +31,18 @@
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
     </main>
-    <div id="winnerMessage" class="hidden">
+    <div id="winnerMessage" class="hiddenMsg">
       <p>Congratulations, <span id="playerName"></span> is the winner!</p>
+      <div class="fireworks"></div>
+      <div class="fireworks-container" id="fireworks-container"></div>
+      <audio id="myAudio" controls>
+        <source
+          src="Charlie Puth - Attention [Official Video].mp3"
+          type="audio/mpeg"
+        />
+        <!-- Your browser does not support the audio element. -->
+      </audio>
     </div>
-    <button id="showWinnerButton" class="btn winner">🏆Show Winner</button>
-    <!-- <script src="script.js"></script> -->
     <script src="script.js"></script>
   </body>
 </html>

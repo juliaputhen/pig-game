@@ -29,6 +29,8 @@ const init = function () {
   playerX.classList.add('player--active');
   playerY.classList.remove('player--active');
   document.getElementById('winnerMessage').style.display = 'none';
+  const audio = document.getElementById('myAudio');
+  audio.pause();
 };
 init();
 function Dice() {
@@ -80,6 +82,37 @@ buttonHold.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
+      const playerName = 'Player' + Number(activePlayer + 1);
+      document.getElementById('playerName').textContent = playerName;
+      document.getElementById('winnerMessage').style.display = 'block';
+      const audio = document.getElementById('myAudio');
+      audio.play();
+
+      function createFirework() {
+        const fireworksContainer = document.getElementById(
+          'fireworks-container'
+        );
+        const firework = document.createElement('div');
+        firework.className = 'firework';
+
+        // Randomly select a firework style
+        const fireworkStyles = ['firework-1', 'firework-2', 'firework-3'];
+        const randomStyle =
+          fireworkStyles[Math.floor(Math.random() * fireworkStyles.length)];
+        firework.classList.add(randomStyle);
+
+        // Randomly position the firework within the container
+        firework.style.left = Math.random() * 100 + 'vw';
+        firework.style.top = Math.random() * 100 + 'vh';
+
+        fireworksContainer.appendChild(firework);
+
+        setTimeout(() => {
+          firework.remove();
+        }, 1000);
+      }
+
+      setInterval(createFirework, 100);
     } else {
       switchPlayer();
     }
@@ -87,9 +120,3 @@ buttonHold.addEventListener('click', function () {
 });
 
 buttonNew.addEventListener('click', init);
-document
-  .getElementById('showWinnerButton')
-  .addEventListener('click', function () {
-    const playerName = 'Player' + Number(activePlayer + 1);
-    document.getElementById('playerName').textContent = playerName;
-  });
