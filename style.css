@@ -179,7 +179,7 @@ main {
   height: 80px;
   width: 320px;
   transform: translate(-50%, -50%);
-  background-color: #4caf50;
+  background-color: #19ece5;
 
   color: #fff;
   padding: 10px;
@@ -198,7 +198,6 @@ main {
   display: none;
 }
 
-/* Add your CSS styles here if needed */
 .fireworks {
   position: absolute;
   width: 10px;
@@ -218,7 +217,7 @@ main {
     transform: translateY(-50px) scale(0.8);
   }
 }
-/* Add your CSS styles here if needed */
+
 .fireworks-container {
   position: relative;
   width: 100%;
@@ -244,8 +243,6 @@ main {
     transform: translateY(-100px) scale(0.8);
   }
 }
-
-/* Define custom styles for different fireworks */
 .firework-1 {
   background-color: #f00;
   border-radius: 50%;
@@ -260,8 +257,6 @@ main {
   background-color: #0f0;
   border-radius: 50% 0 50% 50%;
 }
-
-/* Add more styles for different fireworks as needed */
 
 @keyframes changeGradient {
   0% {
