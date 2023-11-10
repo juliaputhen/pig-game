@@ -1,10 +1,15 @@
 'use strict';
 const playerX = document.querySelector('.player--0');
 const playerY = document.querySelector('.player--1');
+const playerXName = document.querySelector('#name--0');
+const playerYName = document.querySelector('#name--1');
+playerXName.textContent = String(prompt('Enter Player 1 Name'));
+playerYName.textContent = String(prompt('Enter Player 2 Name'));
+
 const scoreX = document.querySelector('#score--0');
-const scoreY = document.getElementById('score--1');
-const currentX = document.getElementById('current--0');
-const currentY = document.getElementById('current--1');
+const scoreY = document.querySelector('#score--1');
+const currentX = document.querySelector('#current--0');
+const currentY = document.querySelector('#current--1');
 
 const diceRoll = document.querySelector('.dice');
 const buttonNew = document.querySelector('.btn--new');
@@ -82,7 +87,12 @@ buttonHold.addEventListener('click', function () {
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.remove('player--active');
-      const playerName = 'Player' + Number(activePlayer + 1);
+      let playerName;
+      if (activePlayer === 0) {
+        playerName = playerXName.textContent;
+      } else {
+        playerName = playerYName.textContent;
+      }
       document.getElementById('playerName').textContent = playerName;
       document.getElementById('winnerMessage').style.display = 'block';
       const audio = document.getElementById('myAudio');
